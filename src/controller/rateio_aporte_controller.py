@@ -3,8 +3,8 @@ import json
 import os
 import shutil
 from tkinter import messagebox
-from app.utils import resource_path
-from app.view.rateio_aporte_view import RateioAporteView
+from src.utils import resource_path
+from src.view.rateio_aporte_view import RateioAporteView
 
 class RateioAporteController:
     def __init__(self, root):
@@ -16,7 +16,6 @@ class RateioAporteController:
 
         self.data_file = os.path.join(self.user_data_dir, "percentuais_investimento.json")
         self.verifica_arquivo_json()
-
         self.carregar_percentuais()
 
     def get_diretorio(self):
@@ -27,7 +26,7 @@ class RateioAporteController:
     def verifica_arquivo_json(self):
         if not os.path.exists(self.data_file):
             try:
-                source = resource_path("app/data/percentuais_investimento.json")
+                source = resource_path("src/data/percentuais_investimento.json")
                 shutil.copyfile(source, self.data_file)
             except Exception as e:
                 with open(self.data_file, "w") as f:
@@ -35,12 +34,11 @@ class RateioAporteController:
 
     def get_categorias(self):
         return [
-            "Renda Fixa Pós-fixada",
-            "Renda Fixa IPCA",
-            "Renda Fixa Prefixada",
+            "Renda Fixa",
             "Ações",
             "Fundos Multimercados",
             "Fundos Imobiliários (FIIs)",
+            "Criptomoedas",
             "Internacional (BDRs e ETFs)"
         ]
 

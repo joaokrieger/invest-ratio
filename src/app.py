@@ -2,8 +2,8 @@ import os
 import tkinter as tk
 
 from ttkbootstrap import Window
-from app.utils import resource_path
-from app.controller.rateio_aporte_controller import RateioAporteController
+from src.utils import resource_path
+from src.controller.rateio_aporte_controller import RateioAporteController
 
 class App(Window):
     def __init__(self):
@@ -12,7 +12,7 @@ class App(Window):
         self.geometry("600x500")
         self.resizable(False, False)
 
-        icone_path = resource_path("app/image/favicon.png")
+        icone_path = resource_path("src/image/favicon.png")
         self.iconphoto(False, tk.PhotoImage(file=icone_path))
 
         RateioAporteController(self)
